@@ -4,7 +4,8 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const path = require('path')
+const path = require('path');
+const cors = require('cors');
 
 /**
  * database setup
@@ -16,6 +17,7 @@ mongoose.connect(
     useUnifiedTopology: true
 })
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('dev'));
